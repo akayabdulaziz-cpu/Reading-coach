@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Reading Coach</title>
+<meta name="description" content="Listen to English text aloud and tap any word for its dictionary meaning." />
+<link rel="manifest" href="manifest.json" />
+<link rel="icon" href="icons/icon-192.png" />
+<link rel="apple-touch-icon" href="icons/icon-192.png" />
+<meta name="theme-color" content="#23324D" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="page">
+    <div class="header">
+      <div class="header-left">
+        <div class="logo-mark">R</div>
+        <div>
+          <h1 class="title">Reading Coach</h1>
+          <p class="subtitle">Listen along, tap any word for its meaning</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="layout">
+      <div class="main-col">
+        <div class="toolbar">
+          <button id="playBtn" class="btn btn-primary">&#9654; Read aloud</button>
+          <button id="stopBtn" class="btn" disabled>&#9632; Stop</button>
+
+          <div class="rate-control">
+            <span>&#127925;</span>
+            <input id="rateSlider" type="range" min="0.6" max="1.4" step="0.05" value="0.95" style="width:90px" />
+            <span id="rateLabel" class="rate-label">0.95x</span>
+          </div>
+
+          <select id="voiceSelect" class="select" style="display:none"></select>
+
+          <div style="flex:1"></div>
+
+          <button id="uploadBtn" class="btn">&#8593; Upload .txt</button>
+          <input id="fileInput" type="file" accept=".txt,text/plain" style="display:none" />
+          <button id="editBtn" class="btn">Edit text</button>
+        </div>
+
+        <div id="editWrap" class="edit-wrap" style="display:none">
+          <textarea id="draftTextarea" class="textarea" placeholder="Paste or type the English text you want to practice..."></textarea>
+          <div style="display:flex; gap:8px; margin-top:10px">
+            <button id="saveEditBtn" class="btn btn-primary">Save &amp; show text</button>
+            <button id="cancelEditBtn" class="btn">Cancel</button>
+          </div>
+        </div>
+
+        <div id="readingCard" class="reading-card">
+          <p id="readingText" class="reading-text"></p>
+        </div>
+
+        <p class="hint">Tip: press <strong>Read aloud</strong> to hear the passage — the word being spoken is highlighted. Tap any word, spoken or not, to open its dictionary card.</p>
+      </div>
+
+      <div id="panel" class="panel"></div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
