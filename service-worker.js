@@ -1,12 +1,12 @@
-const CACHE_NAME = "reading-coach-v1";
+const CACHE_NAME = "reading-coach-v2";
 const ASSETS = [
   "./",
   "./index.html",
   "./style.css",
   "./app.js",
   "./manifest.json",
-  "./icons/icon-192.png",
-  "./icons/icon-512.png",
+  "./icon-192.png",
+  "./icon-512.png",
 ];
 
 self.addEventListener("install", (event) => {
@@ -27,7 +27,6 @@ self.addEventListener("activate", (event) => {
 
 self.addEventListener("fetch", (event) => {
   const url = new URL(event.request.url);
-  // Always go to network for dictionary lookups and audio; cache-first for app shell.
   if (url.hostname.includes("dictionaryapi.dev") || url.hostname.includes("fonts.googleapis.com") || url.hostname.includes("fonts.gstatic.com")) {
     event.respondWith(fetch(event.request).catch(() => caches.match(event.request)));
     return;
